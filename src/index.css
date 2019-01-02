@@ -12,6 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: url(/img/backdrop.png) no-repeat;
   background-position: bottom;
+  background-color: #385174;
 }
 
 form{
