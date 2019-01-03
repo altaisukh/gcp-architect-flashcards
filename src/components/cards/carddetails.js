@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux'
+import { NavLink } from 'react-router-dom';
 
 class CardDetails extends Component {
 	constructor () {
@@ -29,6 +30,11 @@ class CardDetails extends Component {
 				cardbutton = <button className="waves-effect waves-light pink btn" onClick={this.toggleHidden.bind(this)} >Show Answer</button>
 
 			}
+			let all_cards; 
+			all_cards = this.props.cards;
+			var keys = Object.keys(all_cards)
+			let random;
+			random = keys[keys.length * Math.random() << 0];
 			return (
 				<div className="container section card-details">
 					<div className="card z-depth-0">
@@ -40,6 +46,7 @@ class CardDetails extends Component {
        					 </div>
 					</div>
 					{cardbutton}
+					<NavLink to={'/cards/' + random}  className='waves-effect waves-light green btn'>Next</NavLink>
 				</div>
 				)
 		} else {
@@ -58,7 +65,8 @@ const mapStateToProps = (state, ownProps) => {
 	const card = cards ? cards[id] : null
 
 	return {
-		card: card
+		card: card,
+		cards: cards
 
 	}
 }
