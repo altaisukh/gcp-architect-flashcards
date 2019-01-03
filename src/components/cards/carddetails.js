@@ -41,7 +41,6 @@ class CardDetails extends Component {
 					</div>
 					{cardbutton}
 				</div>
-
 				)
 		} else {
 			return (
