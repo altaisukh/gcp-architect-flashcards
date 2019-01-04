@@ -18,7 +18,6 @@ class CardDetails extends Component {
 	}
 	render() {
 		const {card} = this.props;
-		console.log(this.state)
 		if (card) {
 			let cardback;
 			let cardbutton;
