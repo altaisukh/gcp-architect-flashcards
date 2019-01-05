@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux'
 import { NavLink } from 'react-router-dom';
+import {Redirect} from 'react-router-dom'
+
 
 class CardDetails extends Component {
 	constructor () {
@@ -17,7 +19,8 @@ class CardDetails extends Component {
 		})
 	}
 	render() {
-		const {card} = this.props;
+		const {card, cards, auth} = this.props;
+		if (!auth.uid) return <Redirect to= '/signin' />
 		if (card) {
 			let cardback;
 			let cardbutton;
@@ -30,8 +33,7 @@ class CardDetails extends Component {
 
 			}
 			let all_cards; 
-			all_cards = this.props.cards;
-			var keys = Object.keys(all_cards)
+			var keys = Object.keys(cards)
 			let random;
 			random = keys[keys.length * Math.random() << 0];
 			return (
@@ -65,7 +67,8 @@ const mapStateToProps = (state, ownProps) => {
 
 	return {
 		card: card,
-		cards: cards
+		cards: cards,
+		auth: state.firebase.auth
 
 	}
 }

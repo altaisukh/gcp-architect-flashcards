@@ -5,27 +5,23 @@ import SignedOutLinks from './signedoutlinks';
 import { connect }  from 'react-redux'
 import { compose } from 'redux'
 
-class Navbar extends Component{
-	render(signedout) {
-    
-		// console.log(this.props);
-		
-		
-		return (
+const Navbar = (props) => {
+	const {auth} = props
+	//console.log(auth)
+	const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
+	return (
 			<nav className="nav-wrapper grey darken-3">
 			<div className="container">
 			<Link to='/' className="brand-logo">Google Cards</Link>
-			{ signedout ? <SignedOutLinks />  : <SignedInLinks />  }
+			{ links }
 			</div>
 		</nav>
 		)
-	  }
-	}
+}
 
 const mapStateToProps = (state) => {
-	const signedout = state.firebase.auth.isEmpty ? true : false
 	return {
-		signedout: signedout
+		auth: state.firebase.auth
 	}
 }
 

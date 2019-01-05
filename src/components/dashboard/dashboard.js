@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import CardList from '../cards/cardlist'
-import Notifications from './notifications'
+//import Notifications from './notifications'
 import { connect } from 'react-redux'
 import {firestoreConnect} from 'react-redux-firebase'
 import {compose} from 'redux'
+import {Redirect} from 'react-router-dom'
 
 class Dashboard extends Component {
   render() {
     
     // console.log(this.props);
-    const { cards } = this.props;
+    const { cards, auth } = this.props;
+    if (!auth.uid) return <Redirect to= 'signin' />
     
     return (
       <div className="dashboard container">
@@ -27,7 +29,8 @@ class Dashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    cards: state.firestore.ordered.cards
+    cards: state.firestore.ordered.cards,
+    auth: state.firebase.auth
   }
 }
 

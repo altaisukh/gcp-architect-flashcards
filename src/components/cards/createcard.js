@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {createCard} from '../../store/actions/cardActions'
+import {Redirect} from 'react-router-dom'
+import {compose} from 'redux'
+
 
 class CreateCard extends Component {
 	state = {
@@ -20,6 +23,9 @@ class CreateCard extends Component {
 		this.props.createCard(this.state)
 	}
 	render() {
+		const {auth} = this.props
+		if (!auth.uid) return <Redirect to= 'signin' />
+
 		return (
 			<div className="container">
 				<form onSubmit={this.handleSubmit} className="white">
@@ -48,4 +54,12 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(null, mapDispatchToProps) (CreateCard)
+const mapStateToProps = (state) => {
+	return {
+		auth: state.firebase.auth
+	}
+}
+
+
+export default compose(
+	connect(mapStateToProps, mapDispatchToProps)) (CreateCard)
