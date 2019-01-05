@@ -21,6 +21,7 @@ class CardDetails extends Component {
 	render() {
 		const {card, cards, auth} = this.props;
 		if (!auth.uid) return <Redirect to= '/signin' />
+		if (auth.email.indexOf('@google.com') === -1 && auth.email.indexOf('@mavenwave.com') === -1 ) return <Redirect to= '/someday' />
 		if (card) {
 			let cardback;
 			let cardbutton;
@@ -32,7 +33,6 @@ class CardDetails extends Component {
 				cardbutton = <button className="waves-effect waves-light pink btn" onClick={this.toggleHidden.bind(this)} >Show Answer</button>
 
 			}
-			let all_cards; 
 			var keys = Object.keys(cards)
 			let random;
 			random = keys[keys.length * Math.random() << 0];

@@ -11,7 +11,10 @@ class Dashboard extends Component {
     
     // console.log(this.props);
     const { cards, auth } = this.props;
-    if (!auth.uid) return <Redirect to= 'signin' />
+    console.log(auth.email)
+    if (!auth.uid) return <Redirect to= '/signin' />
+
+    if (auth.email.indexOf('@google.com') === -1 && auth.email.indexOf('@mavenwave.com') === -1 ) return <Redirect to= '/someday' />
     
     return (
       <div className="dashboard container">
@@ -30,7 +33,7 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   return {
     cards: state.firestore.ordered.cards,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   }
 }
 

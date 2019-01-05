@@ -6,10 +6,11 @@ import { signOut } from '../../store/actions/authActions'
 
 class SignedInLinks extends Component {
 	render(){
+		const {signOut} = this.props
 		return (
 			<ul className="right">
 			<li><NavLink to='/create'>New Card</NavLink></li>
-			<li><a onClick={this.props.signOut}>Log Out</a></li>
+			<li><a onClick={signOut}>Log Out</a></li>
 			<li><NavLink to='/' className='btn btn-floating pink lighten-1'>GCP</NavLink></li>
 			</ul>)
 			}}

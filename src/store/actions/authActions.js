@@ -2,7 +2,6 @@ import firebase from '../../config/fbConfig'
 
 export const signIn = () => {
 	return (dispatch) => {
-		console.log("It is working")
 		const provider = new firebase.auth.GoogleAuthProvider();
 		firebase.auth().signInWithPopup(provider)
 		.then(() => {
@@ -21,4 +20,5 @@ export const signOut = () => {
 		)
 	}
 };
+
 

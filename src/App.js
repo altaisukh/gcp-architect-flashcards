@@ -5,6 +5,7 @@ import Dashboard from './components/dashboard/dashboard'
 import CardDetails from './components/cards/carddetails'
 import CreateCard from './components/cards/createcard'
 import SignIn from './components/auth/signin'
+import Someday from './components/someday/someday'
 //          <Route path='/signin' component={SignIn} />
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
           <Route path='/cards/:id' component={CardDetails} />
           <Route path='/create' component={CreateCard} />
           <Route path='/signin' component={SignIn} />
+          <Route path='/someday' component={Someday} />
         </Switch>
       </div>
       </BrowserRouter>

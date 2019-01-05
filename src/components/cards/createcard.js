@@ -25,7 +25,7 @@ class CreateCard extends Component {
 	render() {
 		const {auth} = this.props
 		if (!auth.uid) return <Redirect to= 'signin' />
-
+		if (auth.email.indexOf('@google.com') === -1 && auth.email.indexOf('@mavenwave.com') === -1 ) return <Redirect to= '/someday' />
 		return (
 			<div className="container">
 				<form onSubmit={this.handleSubmit} className="white">
