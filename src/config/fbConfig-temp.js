@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 // Replace this with your own config details, rename file as fbConfig.js
 var fbConfig = {
-    apiKey: "FB_API",
+    apiKey: "FB_API_KEY",
     authDomain: "FB_AUTH_DOMAIN",
     databaseURL: "FB_DB_URL",
     projectId: "FB_PROJECT_ID",
