@@ -12,7 +12,3 @@ https://gitter.im/redux-firebase/Lobby
 https://github.com/gregsramblings/google-cloud-4-words#networking-products
 
 The project is still a work in progress. 
-
-Further updates:
-1. Replace the dummy config file with updatable values for pushing. 
-1. 
